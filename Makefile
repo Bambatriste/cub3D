@@ -13,6 +13,7 @@ CUB_SRCS = \
 		./game/init/init.c\
 		./game/move/get_user_input.c\
 		./game/move/move.c\
+		./game/move/move2.c\
 		./game/parsing/checks.c\
 		./game/parsing/errors.c\
 		./game/parsing/flood_fill.c\
@@ -24,7 +25,7 @@ CC = clang
 
 CUB_OBJS = ${CUB_SRCS:.c=.o}
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 MAC_MLX_EXT = -framework OpenGL -framework Appkit
 

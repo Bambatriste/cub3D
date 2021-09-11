@@ -1,82 +1,75 @@
 #include "../headers/cub.h"
 
-void    check_cub(t_params *params, t_game *game)
+void	check_cub(t_params *params, t_game *game)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(params->map_path);
-    if (len < 4)
-        ft_exit(WRONG_MAP_FORMAT, game);
-	if ((params->fd = open(params->map_path, O_RDONLY)) == -1)
+	if (len < 4)
+		ft_exit(WRONG_MAP_FORMAT, game);
+	params->fd = open(params->map_path, O_RDONLY);
+	if (params->fd == -1)
 	{
 		close(params->fd);
 		ft_exit(CANT_OPEN_MAP_FILE, game);
 	}
-	if ((params->map_path[len - 1] != 'b' || params->map_path[len - 2] != 'u'
+	if (params->map_path[len - 1] != 'b' || params->map_path[len - 2] != 'u'
 		|| params->map_path[len - 3] != 'c' || params->map_path[len - 4] != '.')
-        && ((params->map_path[len - 1] != 'B' || params->map_path[len - 2] != 'U'
-		|| params->map_path[len - 3] != 'C' || params->map_path[len - 4] != '.')))
-            ft_exit(WRONG_MAP_FORMAT, game);
+		ft_exit(WRONG_MAP_FORMAT, game);
 }
 
-void    check_map_buff(char *buffer, t_game *game)
+void	check_map_buff(char *buffer, t_game *game)
 {
-    int i;
-    char *set = " \f\t\n\r\v01234NSEW";
+	int			i;
+	const char	*set = " \f\t\n\r\v01NSEW";
 
-    //todo : remove 234
-
-    i = 0;
-    while(buffer[i])
-    {
-        if(!ft_inset(buffer[i] , set))
-            ft_save_error(game->params, INVALID_MAPS_CHARS);
-        i++;
-    }
+	i = 0;
+	while (buffer[i])
+	{
+		if (!ft_inset(buffer[i], set))
+			ft_save_error(game->params, INVALID_MAPS_CHARS);
+		i++;
+	}
 }
 
-void check_param_str(int size, t_game *game)
+void	check_param_str(int size, t_game *game)
 {
-    if(ft_strncmp(game->params->first_str , "R", size) != 0 && ft_strncmp(game->params->first_str , "NO", size) != 0 
-    && ft_strncmp(game->params->first_str , "SO", size) != 0 && ft_strncmp(game->params->first_str , "WE", size) != 0 
-    && ft_strncmp(game->params->first_str , "EA", size) != 0 && ft_strncmp(game->params->first_str , "S", size) != 0 
-    && ft_strncmp(game->params->first_str , "F", size) != 0 && ft_strncmp(game->params->first_str , "C", size) != 0)
-    {
-        ft_save_error(game->params, INVALID_PARAM);
-        //ft_exit(INVALID_PARAM, game);
-    }
-
+	if (ft_strncmp(game->params->first_str, "R", size) != 0
+		&& ft_strncmp(game->params->first_str, "NO", size) != 0
+		&& ft_strncmp(game->params->first_str, "SO", size) != 0
+		&& ft_strncmp(game->params->first_str, "WE", size) != 0
+		&& ft_strncmp(game->params->first_str, "EA", size) != 0
+		&& ft_strncmp(game->params->first_str, "S", size) != 0
+		&& ft_strncmp(game->params->first_str, "F", size) != 0
+		&& ft_strncmp(game->params->first_str, "C", size) != 0)
+		ft_save_error(game->params, INVALID_PARAM);
 }
 
-void    check_xpm(char *path, t_game *game)
+void	check_xpm(char *path, t_game *game)
 {
-	int fd;
-	int len;
+	int	fd;
+	int	len;
 
 	len = ft_strlen(path);
-
-	if ((fd = open(path, O_RDONLY)) == -1)
-	{
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
 		ft_save_error(game->params, WRONG_TEX_PATH);
-	}
 	if ((path[len - 1] != 'm' || path[len - 2] != 'p'
-		|| path[len - 3] != 'x' || path[len - 4] != '.')
-        && ((path[len - 1] != 'M' || path[len - 2] != 'P'
-		|| path[len - 3] != 'X' || path[len - 4] != '.')))
-        {
-            ft_save_error(game->params, WRONG_TEX_PATH_FORMAT);
-        }
+			|| path[len - 3] != 'x' || path[len - 4] != '.')
+		&& ((path[len - 1] != 'M' || path[len - 2] != 'P'
+				|| path[len - 3] != 'X' || path[len - 4] != '.')))
+		ft_save_error(game->params, WRONG_TEX_PATH_FORMAT);
 }
 
-void    check_colors(int rgb[3], t_game *game)
+void	check_colors(int rgb[3], t_game *game)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < 3)
-    {
-        if (rgb[i] < 0 || rgb[i] > 255 )
-            ft_save_error(game->params, WRONG_RGB_VALUE);
-        i++;
-    }
+	i = 0;
+	while (i < 3)
+	{
+		if (rgb[i] < 0 || rgb[i] > 255 )
+			ft_save_error(game->params, WRONG_RGB_VALUE);
+		i++;
+	}
 }
