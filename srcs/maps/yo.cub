@@ -1,0 +1,25 @@
+R 848 480
+
+NO ./srcs/ressources/north.XPM
+
+SO ./srcs/ressources/south.XPM
+
+WE ./srcs/ressources/west.XPM
+
+EA ./srcs/ressources/east.XPM
+
+S ./srcs/ressources/pillar.XPM
+
+
+
+F 184,113,39
+
+C 51,198,227
+
+
+
+111
+1S1
+111
+
+
