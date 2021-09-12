@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_settings.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aedouard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/12 18:33:55 by aedouard          #+#    #+#             */
+/*   Updated: 2021/09/12 18:34:07 by aedouard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/cub.h"
 
-/* TODO : handle resolution over max H and W */
 void	get_resolution(t_params *params, char *buffer, t_game *game)
 {
 	int		i;
