@@ -68,8 +68,8 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 int					get_next_line(int fd, char **line);
 int					ft_is_space(char c);
-int					ft_inset(char c,const char *set);
-char				**ft_split_set(char *s,char *set);
+int					ft_inset(char c, const char *set);
+char				**ft_split_set(char *s, char *set);
 void				ft_free_split_strs(char **strs, int nb_strs);
-int				ft_is_only_digits(char *str);
+int					ft_is_only_digits(char *str);
 #endif

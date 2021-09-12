@@ -38,11 +38,11 @@ void	parse_map(t_game *game, t_params *params)
 
 	i = 0;
 	j = 0;
-	game->worldMap = ft_calloc(sizeof(char *), params->map_x_max);
+	game->map = ft_calloc(sizeof(char *), params->map_x_max);
 	params->testmap = ft_calloc(sizeof(char *), params->map_x_max);
 	while (i < params->map_x_max)
 	{
-		game->worldMap[i] = ft_calloc(sizeof(char), params->map_y_max);
+		game->map[i] = ft_calloc(sizeof(char), params->map_y_max);
 		params->testmap[i] = ft_calloc(sizeof(char), params->map_y_max);
 		i++;
 	}
@@ -60,7 +60,7 @@ void	copy_line(int i, int len, char *buffer, t_game *game)
 			adjust_dir(buffer[j], game);
 			game->pos_x = (float)(i) + 0.5;
 			game->pos_y = (float)(j) + 0.5;
-			game->worldMap[i][j] = '0';
+			game->map[i][j] = '0';
 			game->params->testmap[i][j] = '0';
 			game->params->settings.player_pos = 1;
 		}
@@ -69,7 +69,7 @@ void	copy_line(int i, int len, char *buffer, t_game *game)
 			ft_save_error(game->params, MULTI_PLAYER_POS);
 		else
 		{
-			game->worldMap[i][j] = buffer[j];
+			game->map[i][j] = buffer[j];
 			game->params->testmap[i][j] = buffer[j];
 		}
 		j++;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_inset(char c,const char *set)
+int	ft_inset(char c, const char *set)
 {
 	int	i;
 	int	ret;

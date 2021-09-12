@@ -32,10 +32,10 @@ void	find_side(t_ray *ray, t_game *game)
 			game->map_y += ray->step_y;
 			ray->side = 1;
 		}	
-		if (game->worldMap[game->map_x][game->map_y] != '0')
+		if (game->map[game->map_x][game->map_y] != '0')
 		{
 			hit = 1;
-			game->color = game->worldMap[game->map_x][game->map_y];
+			game->color = game->map[game->map_x][game->map_y];
 		}
 	}
 }

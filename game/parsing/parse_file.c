@@ -2,8 +2,8 @@
 
 int	found_all_settings(t_settings settings)
 {
-	if (settings.R && settings.C && settings.F && settings.EA
-		&& settings.WE && settings.NO && settings.SO)
+	if (settings.r && settings.c && settings.f && settings.ea
+		&& settings.we && settings.no && settings.so)
 		return (1);
 	else
 		return (0);
@@ -37,21 +37,21 @@ void	get_settings(t_params *params, t_game *game)
 	if (ft_strncmp(params->first_str, "R", 1) == 0)
 		get_resolution(params, params->line_buff, game);
 	if (ft_strncmp(params->first_str, "NO", 2) == 0)
-		get_path(params->line_buff, &params->settings.NO, game, NO);
+		get_path(params->line_buff, &params->settings.no, game, NO);
 	if (ft_strncmp(params->first_str, "SO", 2) == 0)
-		get_path(params->line_buff, &params->settings.SO, game, SO);
+		get_path(params->line_buff, &params->settings.so, game, SO);
 	if (ft_strncmp(params->first_str, "EA", 2) == 0)
-		get_path(params->line_buff, &params->settings.EA, game, EA);
+		get_path(params->line_buff, &params->settings.ea, game, EA);
 	if (ft_strncmp(params->first_str, "WE", 2) == 0)
-		get_path(params->line_buff, &params->settings.WE, game, WE);
+		get_path(params->line_buff, &params->settings.we, game, WE);
 	if (ft_strncmp(params->first_str, "C", 1) == 0)
 	{
-		fill_rgb(params->line_buff, &params->settings.C,
+		fill_rgb(params->line_buff, &params->settings.c,
 			&params->ceil_color, game);
 	}
 	if (ft_strncmp(params->first_str, "F", 1) == 0)
 	{
-		fill_rgb(params->line_buff, &params->settings.F,
+		fill_rgb(params->line_buff, &params->settings.f,
 			&params->floor_color, game);
 	}
 	free(params->first_str);
@@ -60,6 +60,10 @@ void	get_settings(t_params *params, t_game *game)
 
 void	parsing_exit(t_game *game, t_params *params)
 {
+	if (params->screen_w > params->max_w)
+		params->screen_w = params->max_w;
+	if (params->screen_h > params->max_h)
+		params->screen_h = params->max_h;
 	if (!found_all_settings(params->settings))
 		ft_exit(MISSING_PARAM, game);
 	if (game->params->first_error != NONE)

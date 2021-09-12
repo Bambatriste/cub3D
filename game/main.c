@@ -40,6 +40,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		ft_exit(INCORRECT_ARG_NB, &game);
+	game.mlx = mlx_init();
 	game.params = &params;
 	game.window = &window;
 	params.map_path = av[1];
@@ -48,7 +49,6 @@ int	main(int ac, char **av)
 	parse_map(&game, &params);
 	copy_map(&game, &params);
 	fill_map(game.pos_x, game.pos_y, params.testmap, &game);
-	game.mlx = mlx_init();
 	init_textures(&game, &tex, &params);
 	window_init(&game, &window, &params);
 	update_window(&game, &window);

@@ -25,10 +25,10 @@ void	ft_free_mlx(t_game *game)
 		mlx_destroy_image(game->mlx, game->tex->ea.img);
 		mlx_destroy_image(game->mlx, game->tex->we.img);
 	}
-	free(game->params->NO_texture);
-	free(game->params->SO_texture);
-	free(game->params->WE_texture);
-	free(game->params->EA_texture);
+	free(game->params->no_texture);
+	free(game->params->so_texture);
+	free(game->params->we_texture);
+	free(game->params->ea_texture);
 	if (game->window->img != NULL)
 		mlx_destroy_image(game->mlx, game->window->img);
 	if (game->window->window != NULL)
@@ -45,15 +45,15 @@ void	ft_free_all(t_game *game)
 	i = 0;
 	free(game->params->first_str);
 	free(game->params->line_buff);
-	if (game->worldMap != NULL)
+	if (game->map != NULL)
 	{
 		while (i < game->params->map_x_max)
 		{
-			free(game->worldMap[i]);
+			free(game->map[i]);
 			free(game->params->testmap[i]);
 			i++;
 		}
-		free(game->worldMap);
+		free(game->map);
 		free(game->params->testmap);
 	}
 	ft_free_mlx(game);

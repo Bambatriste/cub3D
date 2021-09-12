@@ -1,4 +1,4 @@
-R 1300 900
+R 8000 6000
 NO ./srcs/tex/eagle.xpm
 SO ./srcs/tex/south.xpm
 WE ./srcs/tex/west.xpm

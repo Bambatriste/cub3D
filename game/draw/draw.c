@@ -21,7 +21,7 @@ void	init_tex(t_ray *ray, t_texture *tex, t_params *params, t_window *window)
 		tex->x = tex->w - tex->x - 1;
 	tex->pos = 0;
 	tex->step = (float)tex->h / ray->line_h;
-	tex->y = (window->draw_start + 1 - params->screenH / 2 + ray->line_h / 2)
+	tex->y = (window->draw_start + 1 - params->screen_h / 2 + ray->line_h / 2)
 		* tex->step;
 }
 
@@ -52,7 +52,7 @@ void	set_img_pixels(t_params *params, t_ray *ray,
 {
 	int	pos;
 
-	pos = window->x + window->y * params->screenW;
+	pos = window->x + window->y * params->screen_w;
 	if (window->y < window->draw_start)
 		window->img_data[pos] = params->ceil_color;
 	else if (window->y < window->draw_end)
@@ -75,7 +75,7 @@ void	draw_vertical_line_img(t_game *game, t_ray *ray,
 	get_tex(game->tex, ray, &tex);
 	init_tex(ray, &tex, params, window);
 	window->y = 0;
-	while (window->y < params->screenH)
+	while (window->y < params->screen_h)
 	{
 		set_img_pixels(params, ray, window, &tex);
 		window->y++;

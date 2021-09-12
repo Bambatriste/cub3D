@@ -6,9 +6,9 @@ void	get_resolution(t_params *params, char *buffer, t_game *game)
 	int		i;
 	char	**split;
 
-	if (params->settings.R == 1)
+	if (params->settings.r == 1)
 		ft_save_error(game->params, MULTIPLE_RES);
-	params->settings.R = 1;
+	params->settings.r = 1;
 	i = 0;
 	split = ft_split_set(buffer, " \f\t\n\r\v");
 	while (split[i])
@@ -22,9 +22,9 @@ void	get_resolution(t_params *params, char *buffer, t_game *game)
 		ft_save_error(params, WRONG_RES_SETTINGS);
 	else
 	{
-		params->screenW = ft_atoi(split[1]);
-		params->screenH = ft_atoi(split[2]);
-		if (params->screenH <= 0 || params->screenW <= 0)
+		params->screen_w = ft_atoi(split[1]);
+		params->screen_h = ft_atoi(split[2]);
+		if (params->screen_h <= 0 || params->screen_w <= 0)
 			ft_save_error(params, WRONG_RES_VALUES);
 	}
 	ft_free_split_strs(split, i);
@@ -33,13 +33,13 @@ void	get_resolution(t_params *params, char *buffer, t_game *game)
 void	ret_path(t_game *game, int name, char *path)
 {
 	if (name == EA)
-		game->params->EA_texture = path;
+		game->params->ea_texture = path;
 	if (name == WE)
-		game->params->WE_texture = path;
+		game->params->we_texture = path;
 	if (name == SO)
-		game->params->SO_texture = path;
+		game->params->so_texture = path;
 	if (name == NO)
-		game->params->NO_texture = path;
+		game->params->no_texture = path;
 }
 
 void	get_path(char *buffer, int *is_set, t_game *game, int name)
