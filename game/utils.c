@@ -18,14 +18,17 @@ void	set_pos_v(t_vector *vector, float x, float y)
 	vector->y = y;
 }
 
-int	rgb_to_int(int r, int g, int b)
+void	destroy_imgs(t_imgs *img, t_game *game)
 {
-	int	rgb;
-
-	rgb = r;
-	rgb = (rgb << 8) + g;
-	rgb = (rgb << 8) + b;
-	return (rgb);
+	if (img->no != NULL)
+		mlx_destroy_image(game->mlx, img->no);
+	if (img->so != NULL)
+		mlx_destroy_image(game->mlx, img->so);
+	if (img->ea != NULL)
+		mlx_destroy_image(game->mlx, img->ea);
+	if (img->we != NULL)
+		mlx_destroy_image(game->mlx, img->we);
+	ft_exit(CORRUPTED_TEX, game);
 }
 
 void	ft_free_mlx(t_game *game)

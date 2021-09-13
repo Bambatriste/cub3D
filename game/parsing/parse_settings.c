@@ -93,7 +93,7 @@ void	get_color(t_game *game, char **strs, int *color, int rgb[3])
 		rgb[i] = ft_atoi(strs[i]);
 		i++;
 	}
-	*color = rgb_to_int(rgb[0], rgb[1], rgb[2]);
+	*color = ft_rgb_to_int(rgb[0], rgb[1], rgb[2]);
 }
 
 void	fill_rgb(char *buffer, int *is_set, int *color, t_game *game)

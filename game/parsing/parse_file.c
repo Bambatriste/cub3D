@@ -35,6 +35,8 @@ void	get_buffer_first_str(char *buffer, t_game *game)
 	while ((buffer[size + i]) && !ft_is_space(buffer[size + i]))
 		size++;
 	game->params->first_str = malloc(sizeof(char) * size + 1);
+	if (game->params->first_str == NULL)
+		ft_exit(FAIL_MALLOC, game);
 	ft_memset(game->params->first_str, 0, size + 1);
 	while (buffer[i + j] && !ft_is_space(buffer[i + j]))
 	{

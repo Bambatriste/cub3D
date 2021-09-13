@@ -51,11 +51,19 @@ void	parse_map(t_game *game, t_params *params)
 	i = 0;
 	j = 0;
 	game->map = ft_calloc(sizeof(char *), params->map_x_max);
+	if (game->map == NULL)
+		ft_exit(FAIL_MALLOC, game);
 	params->testmap = ft_calloc(sizeof(char *), params->map_x_max);
+	if (params->testmap == NULL)
+		ft_exit(FAIL_MALLOC, game);
 	while (i < params->map_x_max)
 	{
 		game->map[i] = ft_calloc(sizeof(char), params->map_y_max);
+		if (game->map[i] == NULL)
+			ft_exit(FAIL_MALLOC, game);
 		params->testmap[i] = ft_calloc(sizeof(char), params->map_y_max);
+		if (params->testmap[i] == NULL)
+			ft_exit(FAIL_MALLOC, game);
 		i++;
 	}
 }

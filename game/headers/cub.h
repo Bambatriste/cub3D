@@ -48,7 +48,9 @@ typedef enum e_error_type
 	WRONG_RGB_VALUE,
 	WRONG_MAP_FORMAT,
 	CANT_OPEN_MAP_FILE,
-	INCORRECT_ARG_NB
+	INCORRECT_ARG_NB,
+	CORRUPTED_TEX,
+	FAIL_MALLOC
 }	t_error_type;
 
 typedef enum e_tex_name
@@ -64,6 +66,15 @@ typedef struct s_vector
 	float	x;
 	float	y;
 }	t_vector;
+
+typedef struct imgs
+{
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
+
+}	t_imgs;
 
 typedef struct s_ray
 {
@@ -168,6 +179,7 @@ typedef struct s_game
 	int			rotate_right;
 	int			map_x;
 	int			map_y;
+	int			en;
 	void		*mlx;
 	float		pos_x;
 	float		pos_y;
@@ -184,14 +196,13 @@ typedef struct s_game
 void	ft_save_error(t_params *params, int errtype);
 void	game_init(t_game *game);
 void	window_init(t_game *game, t_window *window, t_params *params);
-void	init_textures(t_game *game, t_textures *tex, t_params *params);
+void	init_textures(t_game *game, t_textures *tex, t_params *params, int en);
 void	params_init(t_params *params);
 void	settings_init(t_settings *settings);
 void	raycast(t_ray *ray, t_game *game);
 void	draw_vertical_line_img(t_game *game, t_ray *ray, t_window *window,
 			t_params *params);
 void	vector_init(t_vector *vector);
-void	debug(void);
 void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
@@ -217,10 +228,10 @@ void	set_pos_v(t_vector *vector, float x, float y);
 void	rotate_left(t_game *game);
 void	rotate_right(t_game *game);
 void	ft_free_all(t_game *game);
+void	destroy_imgs(t_imgs *img, t_game *game);
 int		key_hook(int keycode, void *param);
 int		found_all_settings(t_settings settings);
 int		close_game(void *param);
 int		key_release(int keycode, void *param);
-int		rgb_to_int(int r, int g, int b);
 
 #endif

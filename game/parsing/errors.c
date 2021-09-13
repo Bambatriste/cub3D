@@ -44,6 +44,8 @@ void	print_error2(int errortype)
 		ft_putstr_fd("Error : can t open map File\n", 2);
 	else if (errortype == INCORRECT_ARG_NB)
 		ft_putstr_fd("Error : incorrect number of arguments for ./cub3D\n", 2);
+	else if (errortype == CORRUPTED_TEX)
+		ft_putstr_fd("Error : one or several corrupted texture.xpm file\n", 2);
 }
 
 void	print_error(int errortype)
@@ -66,5 +68,7 @@ void	print_error(int errortype)
 		ft_putstr_fd("Error : wrong number of arguments for RGB\n", 2);
 	else if (errortype == INVALID_MAPS_CHARS)
 		ft_putstr_fd("Error : invalid characters in map\n", 2);
+	else if (errortype == FAIL_MALLOC)
+		ft_putstr_fd("Error : memory allocation problem\n", 2);
 	print_error2(errortype);
 }

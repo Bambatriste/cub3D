@@ -49,7 +49,7 @@ int	main(int ac, char **av)
 	parse_map(&game, &params);
 	copy_map(&game, &params);
 	fill_map(game.pos_x, game.pos_y, params.testmap, &game);
-	init_textures(&game, &tex, &params);
+	init_textures(&game, &tex, &params, 0);
 	window_init(&game, &window, &params);
 	update_window(&game, &window);
 	mlx_hook(window.window, KeyPress, KeyPressMask, &key_hook, &game);

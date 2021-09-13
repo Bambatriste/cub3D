@@ -24,19 +24,24 @@ void	window_init(t_game *game, t_window *window, t_params *params)
 			params->screen_w, params->screen_h, "cub3D");
 }
 
-void	init_textures(t_game *game, t_textures *tex, t_params *params)
+void	init_textures(t_game *game, t_textures *tex, t_params *params, int en)
 {
 	t_texture	no;
 	t_texture	so;
 	t_texture	ea;
 	t_texture	we;
-	int			en;
+	t_imgs		imgs;
 
-	en = 0;
 	no.img = mlx_xpm_file_to_image(game->mlx, params->no_texture, &no.w, &no.h);
 	so.img = mlx_xpm_file_to_image(game->mlx, params->so_texture, &so.w, &so.h);
 	ea.img = mlx_xpm_file_to_image(game->mlx, params->ea_texture, &ea.w, &ea.h);
 	we.img = mlx_xpm_file_to_image(game->mlx, params->we_texture, &we.w, &we.h);
+	imgs.ea = ea.img;
+	imgs.we = we.img;
+	imgs.so = so.img;
+	imgs.no = no.img;
+	if (no.img == NULL || so.img == NULL || ea.img == NULL || we.img == NULL)
+		destroy_imgs(&imgs, game);
 	no.img_data = (int *)mlx_get_data_addr(no.img, &no.bpp, &no.size_line, &en);
 	ea.img_data = (int *)mlx_get_data_addr(ea.img, &ea.bpp, &ea.size_line, &en);
 	so.img_data = (int *)mlx_get_data_addr(so.img, &so.bpp, &so.size_line, &en);
@@ -57,6 +62,7 @@ void	game_init(t_game *game)
 	game->move_left = 0;
 	game->move_right = 0;
 	game->move = 0;
+	game->en = 0;
 	game->window->img = NULL;
 	game->window->window = NULL;
 	game->map = NULL;
