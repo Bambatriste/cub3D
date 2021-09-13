@@ -13,7 +13,6 @@
 #ifndef CUB_H
 # define CUB_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <math.h>
 # include <string.h>

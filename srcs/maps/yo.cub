@@ -1,14 +1,14 @@
 R 848 480
 
-NO ./srcs/ressources/north.XPM
+NO ./srcs/tex/north.xpm
 
-SO ./srcs/ressources/south.XPM
+SO ./srcs/tex/south.xpm
 
-WE ./srcs/ressources/west.XPM
+WE ./srcs/tex/west.xpm
 
-EA ./srcs/ressources/east.XPM
+EA ./srcs/tex/east.xpm
 
-S ./srcs/ressources/pillar.XPM
+S ./srcs/tex/pillar.xpm
 
 
 
